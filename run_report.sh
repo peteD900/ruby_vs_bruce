@@ -12,8 +12,7 @@ ARG=${1:-y}
 
 # Step 2: Commit and push if argument is 'y' 
 if [[ "$ARG" == "y" ]]; then
-  git add docs/
-  git commit -m "update report"
+  git commit -am "update report"
   git push
   echo "✅ Changes committed and pushed."
 else

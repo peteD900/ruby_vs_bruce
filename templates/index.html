@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height and Weight Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .actions { text-align: center; }
+        .actions a { margin: 0 5px; text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Height and Weight Tracker - {{ file_name }}</h1>
+    <a href="/update/{{ file_name }}">Add/Update Data</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Height (cm)</th>
+                <th>Weight (g)</th>
+                <th>Head Circumference (cm)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ row.date }}</td>
+                <td>{{ row.height_cm }}</td>
+                <td>{{ row.weight_grams }}</td>
+                <td>{{ row.head_circ_cm }}</td>
+                <td class="actions">
+                    <a href="/update/{{ file_name }}?name={{ row.name }}&date={{ row.date }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
